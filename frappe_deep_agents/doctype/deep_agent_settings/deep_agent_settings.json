@@ -1,0 +1,127 @@
+{
+  "actions": [],
+  "creation": "2025-01-08 10:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "llm_section",
+    "default_llm_provider",
+    "openrouter_api_key",
+    "openrouter_model",
+    "column_break_llm",
+    "ollama_url",
+    "ollama_model",
+    "sandbox_section",
+    "enable_code_execution",
+    "k8s_namespace",
+    "sandbox_image",
+    "column_break_sandbox",
+    "sandbox_timeout_minutes",
+    "max_concurrent_sessions"
+  ],
+  "fields": [
+    {
+      "fieldname": "llm_section",
+      "fieldtype": "Section Break",
+      "label": "LLM Configuration"
+    },
+    {
+      "default": "OpenRouter",
+      "fieldname": "default_llm_provider",
+      "fieldtype": "Select",
+      "label": "Default LLM Provider",
+      "options": "OpenRouter\nOllama"
+    },
+    {
+      "depends_on": "eval:doc.default_llm_provider=='OpenRouter'",
+      "fieldname": "openrouter_api_key",
+      "fieldtype": "Password",
+      "label": "OpenRouter API Key"
+    },
+    {
+      "default": "anthropic/claude-sonnet-4",
+      "depends_on": "eval:doc.default_llm_provider=='OpenRouter'",
+      "fieldname": "openrouter_model",
+      "fieldtype": "Data",
+      "label": "OpenRouter Model"
+    },
+    {
+      "fieldname": "column_break_llm",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "http://localhost:11434",
+      "depends_on": "eval:doc.default_llm_provider=='Ollama'",
+      "fieldname": "ollama_url",
+      "fieldtype": "Data",
+      "label": "Ollama URL"
+    },
+    {
+      "default": "llama3.1",
+      "depends_on": "eval:doc.default_llm_provider=='Ollama'",
+      "fieldname": "ollama_model",
+      "fieldtype": "Data",
+      "label": "Ollama Model"
+    },
+    {
+      "fieldname": "sandbox_section",
+      "fieldtype": "Section Break",
+      "label": "Sandbox Configuration"
+    },
+    {
+      "default": "1",
+      "fieldname": "enable_code_execution",
+      "fieldtype": "Check",
+      "label": "Enable Code Execution"
+    },
+    {
+      "default": "frappe-agents",
+      "fieldname": "k8s_namespace",
+      "fieldtype": "Data",
+      "label": "Kubernetes Namespace"
+    },
+    {
+      "default": "python:3.11-slim",
+      "fieldname": "sandbox_image",
+      "fieldtype": "Data",
+      "label": "Sandbox Container Image"
+    },
+    {
+      "fieldname": "column_break_sandbox",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "30",
+      "fieldname": "sandbox_timeout_minutes",
+      "fieldtype": "Int",
+      "label": "Sandbox Timeout (minutes)"
+    },
+    {
+      "default": "10",
+      "fieldname": "max_concurrent_sessions",
+      "fieldtype": "Int",
+      "label": "Max Concurrent Sessions"
+    }
+  ],
+  "issingle": 1,
+  "links": [],
+  "modified": "2025-01-08 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Frappe Deep Agents",
+  "name": "Deep Agent Settings",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "print": 1,
+      "read": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

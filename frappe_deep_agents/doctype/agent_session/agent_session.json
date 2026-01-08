@@ -1,0 +1,106 @@
+{
+  "actions": [],
+  "autoname": "naming_series:",
+  "creation": "2025-01-08 10:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "naming_series",
+    "agent_definition",
+    "status",
+    "column_break_basic",
+    "sandbox_pod",
+    "started_at",
+    "messages_section",
+    "messages"
+  ],
+  "fields": [
+    {
+      "fieldname": "naming_series",
+      "fieldtype": "Select",
+      "hidden": 1,
+      "label": "Naming Series",
+      "options": "AGENT-SESSION-.#####"
+    },
+    {
+      "fieldname": "agent_definition",
+      "fieldtype": "Link",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Agent Definition",
+      "options": "Agent Definition",
+      "reqd": 1
+    },
+    {
+      "default": "active",
+      "fieldname": "status",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "in_standard_filter": 1,
+      "label": "Status",
+      "options": "active\ncompleted\nerror\ntimeout"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "sandbox_pod",
+      "fieldtype": "Data",
+      "label": "Sandbox Pod",
+      "read_only": 1
+    },
+    {
+      "fieldname": "started_at",
+      "fieldtype": "Datetime",
+      "label": "Started At",
+      "read_only": 1
+    },
+    {
+      "fieldname": "messages_section",
+      "fieldtype": "Section Break",
+      "label": "Messages"
+    },
+    {
+      "fieldname": "messages",
+      "fieldtype": "Table",
+      "label": "Messages",
+      "options": "Agent Message"
+    }
+  ],
+  "links": [
+    {
+      "group": "Related",
+      "link_doctype": "Agent Todo",
+      "link_fieldname": "session"
+    },
+    {
+      "group": "Related",
+      "link_doctype": "Agent File",
+      "link_fieldname": "session"
+    }
+  ],
+  "modified": "2025-01-08 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Frappe Deep Agents",
+  "name": "Agent Session",
+  "naming_rule": "By \"Naming Series\" field",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "title_field": "agent_definition"
+}

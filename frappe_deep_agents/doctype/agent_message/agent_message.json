@@ -1,0 +1,55 @@
+{
+  "actions": [],
+  "creation": "2025-01-08 10:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "role",
+    "content",
+    "column_break_msg",
+    "tool_name",
+    "tool_result"
+  ],
+  "fields": [
+    {
+      "default": "user",
+      "fieldname": "role",
+      "fieldtype": "Select",
+      "in_list_view": 1,
+      "label": "Role",
+      "options": "user\nassistant\nsystem\ntool",
+      "reqd": 1
+    },
+    {
+      "fieldname": "content",
+      "fieldtype": "Long Text",
+      "in_list_view": 1,
+      "label": "Content"
+    },
+    {
+      "fieldname": "column_break_msg",
+      "fieldtype": "Column Break"
+    },
+    {
+      "fieldname": "tool_name",
+      "fieldtype": "Data",
+      "label": "Tool Name"
+    },
+    {
+      "fieldname": "tool_result",
+      "fieldtype": "Code",
+      "label": "Tool Result",
+      "options": "JSON"
+    }
+  ],
+  "istable": 1,
+  "links": [],
+  "modified": "2025-01-08 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Frappe Deep Agents",
+  "name": "Agent Message",
+  "owner": "Administrator",
+  "permissions": [],
+  "sort_field": "modified",
+  "sort_order": "DESC"
+}

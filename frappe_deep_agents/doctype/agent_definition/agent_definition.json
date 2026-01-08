@@ -1,0 +1,134 @@
+{
+  "actions": [],
+  "autoname": "field:agent_name",
+  "creation": "2025-01-08 10:00:00.000000",
+  "doctype": "DocType",
+  "engine": "InnoDB",
+  "field_order": [
+    "agent_name",
+    "description",
+    "column_break_basic",
+    "llm_provider",
+    "llm_model",
+    "system_prompt_section",
+    "system_prompt",
+    "features_section",
+    "enable_filesystem",
+    "enable_todos",
+    "enable_subagents",
+    "tools_section",
+    "tools",
+    "yaml_section",
+    "yaml_config"
+  ],
+  "fields": [
+    {
+      "fieldname": "agent_name",
+      "fieldtype": "Data",
+      "label": "Agent Name",
+      "reqd": 1,
+      "unique": 1
+    },
+    {
+      "fieldname": "description",
+      "fieldtype": "Small Text",
+      "label": "Description"
+    },
+    {
+      "fieldname": "column_break_basic",
+      "fieldtype": "Column Break"
+    },
+    {
+      "default": "Default",
+      "fieldname": "llm_provider",
+      "fieldtype": "Select",
+      "label": "LLM Provider",
+      "options": "Default\nOpenRouter\nOllama"
+    },
+    {
+      "fieldname": "llm_model",
+      "fieldtype": "Data",
+      "label": "LLM Model (override)"
+    },
+    {
+      "fieldname": "system_prompt_section",
+      "fieldtype": "Section Break",
+      "label": "System Prompt"
+    },
+    {
+      "fieldname": "system_prompt",
+      "fieldtype": "Long Text",
+      "label": "System Prompt"
+    },
+    {
+      "fieldname": "features_section",
+      "fieldtype": "Section Break",
+      "label": "Features"
+    },
+    {
+      "default": "1",
+      "fieldname": "enable_filesystem",
+      "fieldtype": "Check",
+      "label": "Enable Filesystem Access"
+    },
+    {
+      "default": "1",
+      "fieldname": "enable_todos",
+      "fieldtype": "Check",
+      "label": "Enable Todo Tracking"
+    },
+    {
+      "default": "0",
+      "fieldname": "enable_subagents",
+      "fieldtype": "Check",
+      "label": "Enable SubAgents"
+    },
+    {
+      "fieldname": "tools_section",
+      "fieldtype": "Section Break",
+      "label": "Tools"
+    },
+    {
+      "fieldname": "tools",
+      "fieldtype": "Table",
+      "label": "Tools",
+      "options": "Agent Tool"
+    },
+    {
+      "collapsible": 1,
+      "fieldname": "yaml_section",
+      "fieldtype": "Section Break",
+      "label": "YAML Configuration"
+    },
+    {
+      "fieldname": "yaml_config",
+      "fieldtype": "Code",
+      "label": "YAML Config",
+      "options": "YAML"
+    }
+  ],
+  "links": [],
+  "modified": "2025-01-08 10:00:00.000000",
+  "modified_by": "Administrator",
+  "module": "Frappe Deep Agents",
+  "name": "Agent Definition",
+  "naming_rule": "By fieldname",
+  "owner": "Administrator",
+  "permissions": [
+    {
+      "create": 1,
+      "delete": 1,
+      "email": 1,
+      "export": 1,
+      "print": 1,
+      "read": 1,
+      "report": 1,
+      "role": "System Manager",
+      "share": 1,
+      "write": 1
+    }
+  ],
+  "sort_field": "modified",
+  "sort_order": "DESC",
+  "title_field": "agent_name"
+}
