@@ -14,7 +14,8 @@ export default defineConfig({
   build: {
     outDir: '../frappe_deep_agents/public/frontend',
     emptyOutDir: true,
-    target: ['es2020', 'safari14'],
+    target: 'es2018',
+    cssTarget: 'safari14',
     rollupOptions: {
       output: {
         manualChunks: {
@@ -23,6 +24,12 @@ export default defineConfig({
           'markdown': ['marked', 'highlight.js']
         }
       }
+    }
+  },
+  esbuild: {
+    target: 'es2018',
+    supported: {
+      'dynamic-import': true
     }
   },
   resolve: {
