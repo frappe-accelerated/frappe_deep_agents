@@ -163,7 +163,7 @@ def end_session(session_id: str) -> dict:
     return {"status": "completed", "session": session_id}
 
 
-@frappe.whitelist()
+@frappe.whitelist(allow_guest=True)
 def list_agents() -> list:
     """
     List available agent definitions.
