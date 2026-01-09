@@ -231,6 +231,21 @@ def update_todo(todo_name: str, status: str) -> dict:
 
 
 @frappe.whitelist()
+def get_file_content(file_name: str) -> str:
+    """
+    Get content of an agent file.
+
+    Args:
+        file_name: Agent File document name
+
+    Returns:
+        File content as string
+    """
+    file_doc = frappe.get_doc("Agent File", file_name)
+    return file_doc.content or ""
+
+
+@frappe.whitelist()
 def export_agent_yaml(agent_definition: str) -> str:
     """
     Export agent definition as YAML.

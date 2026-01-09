@@ -2,7 +2,16 @@
 Background tasks for frappe_deep_agents.
 """
 import frappe
-from frappe.realtime import emit_via_redis
+from frappe_deep_agents.realtime import (
+    emit_agent_token,
+    emit_tool_call_start,
+    emit_tool_call_complete,
+    emit_agent_complete,
+    emit_agent_error,
+    emit_agent_status,
+    emit_todo_update,
+    emit_file_update
+)
 
 
 def run_agent(session_id: str, message: str):
@@ -16,6 +25,9 @@ def run_agent(session_id: str, message: str):
     try:
         session = frappe.get_doc("Agent Session", session_id)
         agent_def = frappe.get_doc("Agent Definition", session.agent_definition)
+
+        # Update status
+        emit_agent_status(session_id, "thinking", "Processing your request...")
 
         # Import execution service
         from frappe_deep_agents.services.agent_execution import AgentExecutionService
@@ -36,22 +48,28 @@ def run_agent(session_id: str, message: str):
                 if isinstance(chunk, str):
                     full_response += chunk
                     # Emit token to client
-                    emit_via_redis(
-                        f"agent_session_{session_id}",
-                        "agent_token",
-                        {"token": chunk, "session": session_id}
-                    )
+                    emit_agent_token(session_id, chunk)
+
                 elif isinstance(chunk, dict):
-                    # Tool execution result
-                    emit_via_redis(
-                        f"agent_session_{session_id}",
-                        "tool_result",
-                        {
-                            "tool": chunk.get("tool"),
-                            "result": chunk.get("result"),
-                            "session": session_id
-                        }
-                    )
+                    chunk_type = chunk.get("type")
+
+                    if chunk_type == "tool_start":
+                        # Tool execution starting
+                        emit_tool_call_start(
+                            session_id,
+                            chunk.get("tool", "unknown"),
+                            chunk.get("input", {})
+                        )
+                        emit_agent_status(session_id, "running", f"Running {chunk.get('tool')}...")
+
+                    elif chunk_type == "tool_end":
+                        # Tool execution completed
+                        emit_tool_call_complete(
+                            session_id,
+                            chunk.get("tool", "unknown"),
+                            chunk.get("result", ""),
+                            success=not chunk.get("error")
+                        )
 
         asyncio.run(stream_agent())
 
@@ -64,11 +82,7 @@ def run_agent(session_id: str, message: str):
         session.save()
 
         # Emit completion event
-        emit_via_redis(
-            f"agent_session_{session_id}",
-            "agent_complete",
-            {"session": session_id, "status": "success"}
-        )
+        emit_agent_complete(session_id, "success")
 
         frappe.db.commit()
 
@@ -79,11 +93,7 @@ def run_agent(session_id: str, message: str):
         )
 
         # Emit error event
-        emit_via_redis(
-            f"agent_session_{session_id}",
-            "agent_error",
-            {"session": session_id, "error": str(e)}
-        )
+        emit_agent_error(session_id, str(e))
 
         # Update session status
         try:
@@ -191,11 +201,7 @@ def sync_todos(session_id: str, todos: list):
         fields=["name", "description", "status"]
     )
 
-    emit_via_redis(
-        f"agent_session_{session_id}",
-        "todo_update",
-        {"session": session_id, "todos": updated_todos}
-    )
+    emit_todo_update(session_id, updated_todos)
 
 
 def sync_files(session_id: str, files: list):
@@ -232,8 +238,4 @@ def sync_files(session_id: str, files: list):
         fields=["name", "file_path", "is_directory"]
     )
 
-    emit_via_redis(
-        f"agent_session_{session_id}",
-        "file_update",
-        {"session": session_id, "files": updated_files}
-    )
+    emit_file_update(session_id, updated_files)

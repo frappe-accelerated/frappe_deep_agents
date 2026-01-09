@@ -1,7 +1,7 @@
 {
 	"category": "",
 	"charts": [],
-	"content": "[{\"id\":\"E6rmnkgfFx\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Deep Agents</span>\",\"col\":12}},{\"id\":\"_DZwt0Cd8m\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Agent Workspace\",\"col\":3}},{\"id\":\"3yN0sIKfPs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Agent Definition\",\"col\":3}},{\"id\":\"bE1SiCbQXp\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Agent Session\",\"col\":3}},{\"id\":\"xTkOLdNanE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Deep Agent Settings\",\"col\":3}},{\"id\":\"pRqLmNoCdT\",\"type\":\"spacer\",\"data\":{\"col\":12}},{\"id\":\"jQwXyVzBhU\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h6 text-muted\\\">Your Shortcuts</span>\",\"col\":12}},{\"id\":\"KdMzPqWnFx\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Agent File\",\"col\":3}},{\"id\":\"LmNpRsTuVy\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Agent Todo\",\"col\":3}}]",
+	"content": "[{\"id\":\"E6rmnkgfFx\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Deep Agents</span>\",\"col\":12}},{\"id\":\"_DZwt0Cd8m\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Agent Chat\",\"col\":3}},{\"id\":\"3yN0sIKfPs\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Agent Definition\",\"col\":3}},{\"id\":\"xTkOLdNanE\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Deep Agent Settings\",\"col\":3}}]",
 	"creation": "2026-01-09 00:00:00",
 	"custom_blocks": [],
 	"docstatus": 0,
@@ -18,9 +18,9 @@
 		{
 			"hidden": 0,
 			"is_query_report": 0,
-			"label": "Agent Workspace",
+			"label": "Agent Chat",
 			"link_count": 0,
-			"link_to": "/agent",
+			"link_to": "agent-chat",
 			"link_type": "Page",
 			"onboard": 0,
 			"type": "Link"
@@ -38,39 +38,9 @@
 		{
 			"hidden": 0,
 			"is_query_report": 0,
-			"label": "Agent Session",
-			"link_count": 0,
-			"link_to": "Agent Session",
-			"link_type": "DocType",
-			"onboard": 0,
-			"type": "Link"
-		},
-		{
-			"hidden": 0,
-			"is_query_report": 0,
 			"label": "Deep Agent Settings",
 			"link_count": 0,
 			"link_to": "Deep Agent Settings",
-			"link_type": "DocType",
-			"onboard": 0,
-			"type": "Link"
-		},
-		{
-			"hidden": 0,
-			"is_query_report": 0,
-			"label": "Agent File",
-			"link_count": 0,
-			"link_to": "Agent File",
-			"link_type": "DocType",
-			"onboard": 0,
-			"type": "Link"
-		},
-		{
-			"hidden": 0,
-			"is_query_report": 0,
-			"label": "Agent Todo",
-			"link_count": 0,
-			"link_to": "Agent Todo",
 			"link_type": "DocType",
 			"onboard": 0,
 			"type": "Link"
@@ -94,8 +64,8 @@
 			"format": "{} Open",
 			"icon": "comment-discussion",
 			"idx": 1,
-			"label": "Agent Workspace",
-			"link_to": "/agent",
+			"label": "Agent Chat",
+			"link_to": "agent-chat",
 			"stats_filter": "{}",
 			"type": "Page"
 		},
@@ -112,45 +82,12 @@
 		},
 		{
 			"color": "Grey",
-			"doc_view": "List",
-			"format": "{} Open",
-			"icon": "sync",
-			"idx": 3,
-			"label": "Agent Session",
-			"link_to": "Agent Session",
-			"stats_filter": "{}",
-			"type": "DocType"
-		},
-		{
-			"color": "Grey",
 			"doc_view": "",
 			"format": "{} Open",
 			"icon": "settings",
-			"idx": 4,
+			"idx": 3,
 			"label": "Deep Agent Settings",
 			"link_to": "Deep Agent Settings",
-			"stats_filter": "{}",
-			"type": "DocType"
-		},
-		{
-			"color": "Grey",
-			"doc_view": "List",
-			"format": "{} Open",
-			"icon": "file",
-			"idx": 5,
-			"label": "Agent File",
-			"link_to": "Agent File",
-			"stats_filter": "{}",
-			"type": "DocType"
-		},
-		{
-			"color": "Grey",
-			"doc_view": "List",
-			"format": "{} Open",
-			"icon": "checklist",
-			"idx": 6,
-			"label": "Agent Todo",
-			"link_to": "Agent Todo",
 			"stats_filter": "{}",
 			"type": "DocType"
 		}

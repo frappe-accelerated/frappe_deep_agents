@@ -1,0 +1,17 @@
+{
+ "creation": "2026-01-09 00:00:00",
+ "docstatus": 0,
+ "doctype": "Page",
+ "icon": "hubot",
+ "idx": 0,
+ "modified": "2026-01-09 00:00:00",
+ "modified_by": "Administrator",
+ "module": "Frappe Deep Agents",
+ "name": "agent-chat",
+ "owner": "Administrator",
+ "page_name": "Agent Chat",
+ "roles": [],
+ "standard": "Yes",
+ "system_page": 0,
+ "title": "Agent Chat"
+}

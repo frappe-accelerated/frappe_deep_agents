@@ -90,27 +90,15 @@ body {
 	}
 }
 
-/* Message bubbles */
-.message.user {
-	margin-left: auto;
-	background-color: #3b82f6;
-	color: white;
+/* Modern layout for three-column workspace */
+.agent-workspace {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
 }
 
-.message.assistant {
-	margin-right: auto;
-	background-color: #f3f4f6;
-	color: #1f2937;
-}
-
-.message.system {
-	margin-right: auto;
-	background-color: #fef3c7;
-	color: #92400e;
-}
-
-.message.tool {
-	margin-right: auto;
-	background-color: #e0e7ff;
-	color: #3730a3;
+/* Ensure proper background colors */
+body, #app {
+	background-color: #f9fafb;
 }

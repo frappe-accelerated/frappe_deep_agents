@@ -4,15 +4,36 @@ import AgentWorkspace from './pages/AgentWorkspace.vue'
 
 const routes = [
 	{
-		path: '/agent',
+		path: '/app/agent-chat',
 		name: 'Home',
-		component: Home
+		component: AgentWorkspace
 	},
 	{
-		path: '/agent/workspace/:sessionId?',
-		name: 'Workspace',
+		path: '/app/agent-chat/:sessionId',
+		name: 'WorkspaceWithSession',
 		component: AgentWorkspace,
 		props: true
+	},
+	{
+		path: '/agent',
+		name: 'AgentHome',
+		component: AgentWorkspace
+	},
+	{
+		path: '/agent/workspace',
+		name: 'Workspace',
+		component: AgentWorkspace
+	},
+	{
+		path: '/agent/workspace/:sessionId',
+		name: 'WorkspaceSession',
+		component: AgentWorkspace,
+		props: true
+	},
+	// Fallback redirect
+	{
+		path: '/:pathMatch(.*)*',
+		redirect: '/app/agent-chat'
 	}
 ]
 
