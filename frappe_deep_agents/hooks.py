@@ -12,17 +12,23 @@ required_apps = ["frappe"]
 
 # Website route rules
 website_route_rules = [
-    {"from_route": "/agent/<path:app_path>", "to_route": "agent"},
+	{"from_route": "/agent/<path:app_path>", "to_route": "agent"},
 ]
+
+# Include frontend assets (built by Vite)
+# These will be available after running: cd frontend && npm run build
+app_include_js = []
+app_include_css = []
 
 # Scheduled Tasks
 scheduler_events = {
-    "hourly": [
-        "frappe_deep_agents.tasks.cleanup_sessions"
-    ],
+	"hourly": [
+		"frappe_deep_agents.tasks.cleanup_sessions"
+	],
 }
 
 # Fixtures
 fixtures = [
-    {"doctype": "Custom Field", "filters": [["module", "=", "Frappe Deep Agents"]]},
+	{"doctype": "Custom Field", "filters": [["module", "=", "Frappe Deep Agents"]]},
+	{"doctype": "Workspace", "filters": [["module", "=", "Frappe Deep Agents"]]},
 ]

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Deep Agents - Frappe</title>
+
+	<!-- Frappe base styles -->
+	<link rel="stylesheet" href="/assets/frappe/css/frappe-web.min.css">
+
+	<!-- Frontend app styles and scripts (built by Vite) -->
+	<script type="module" src="/assets/frappe_deep_agents/frontend/index.js?v={{ build_version }}"></script>
+	<link rel="stylesheet" href="/assets/frappe_deep_agents/frontend/style.css?v={{ build_version }}">
+</head>
+<body>
+	<div id="app"></div>
+
+	<!-- Pass context to frontend -->
+	<script>
+		window.frappe = window.frappe || {};
+		window.frappe.csrf_token = "{{ csrf_token }}";
+		window.frappe.socketio_port = {{ socketio_port }};
+		window.frappe.user = "{{ user }}";
+		window.frappe.user_image = "{{ user_image or '' }}";
+	</script>
+</body>
+</html>
