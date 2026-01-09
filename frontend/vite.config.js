@@ -14,7 +14,7 @@ export default defineConfig({
   build: {
     outDir: '../frappe_deep_agents/public/frontend',
     emptyOutDir: true,
-    target: 'es2015',
+    target: ['es2020', 'safari14'],
     rollupOptions: {
       output: {
         manualChunks: {
